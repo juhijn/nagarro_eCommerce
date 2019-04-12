@@ -163,5 +163,10 @@ app.get('/cart', async (req, res) => {
 
 db.sync()
   .then(() => {
-    app.listen(5555)
+  
+  const PORT = process.env.PORT || 4444
+  
+  app.listen(PORT)
   })
+  
+ 
