@@ -94,14 +94,13 @@ app.post('/shopping', async (req, res) => {
 //   // res.redirect('/');
 //   res.send({success: false,err:e.message})
 // }
-// }) 
+// })
 
 
 
 //                                                 products
 
 app.get('/products', async (req, res) => {
-
   const users = await Products.findAll()
   res.send(users)
 })
@@ -143,8 +142,8 @@ app.get('/carts/:pqr', async (req, res) => {
     const result = await Carts.create({
       pId: req.params.pqr
     })
-    
-   // res.send({ success: true })
+
+    // res.send({ success: true })
     res.redirect('/shopping.html');
   } catch (e) {
     res.send({ success: false, err: e.message })
@@ -154,19 +153,31 @@ app.get('/carts/:pqr', async (req, res) => {
 app.get('/cart', async (req, res) => {
   try {
     const result = await Carts.findAll()
-    res.send(result)
-  } catch (e) {
+    //res.send(result)
+    let resultfinal = new Array();
+     result.forEach(async element => {
+       const result2= await Products.findAll({
+         where: {
+           id: element.pId
+         }
+       })
+       resultfinal.push(result2)
+       console.log(resultfinal)
+       //res.send(result2)
+     })
+  }
+  catch (e) {
     // res.redirect('/');
     res.send({ success: false, err: e.message })
   }
 })
 
+
 db.sync()
   .then(() => {
-  
-  const PORT = process.env.PORT || 4444
-  
-  app.listen(PORT)
+
+    const PORT = process.env.PORT || 4444
+
+    app.listen(PORT)
   })
-  
- 
+
