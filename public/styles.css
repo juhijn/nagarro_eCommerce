@@ -1,0 +1,36 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; 
+    overflow: hidden;
+    background-color: rgba(30, 71, 37, 0.767);
+  }
+
+  body{
+    background-image: url('Background.gif');
+    background-color: darkkhaki;
+  }
+
+  li {
+    float: left;
+
+
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: rgba(218, 203, 203, 0.63);
+  }
+   
+  table :hover{
+background-color:lightgray; 
+  }
+
+  
