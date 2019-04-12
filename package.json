@@ -1,7 +1,6 @@
 {
   "name": "node_webserver",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,5 +10,15 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juhijn/nagarro_eCommerce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/juhijn/nagarro_eCommerce/issues"
+  },
+  "homepage": "https://github.com/juhijn/nagarro_eCommerce#readme",
+  "description": ""
 }
