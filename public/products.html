@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Products</title>
   <script src="jquery.js"></script>
   <script src="productlist.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -26,21 +26,38 @@
     </ul>
 
     <h1>Products</h1>
-
-    <input id="productname" placeholder="Product Name">
-    <input id="price" placeholder="Price">
-    <br>
-    <!--<input id="vendorname" placeholder="Vendor Name">-->
-    <select id="venderlist">
-      <!--<option value="volvo">Volvo</option>-->
-    </select>
-    <input id="quantity" placeholder="Quantity">
-    <br>
-    <button id="addproduct"> Add Product </button>
-    <br>
-    <br>
-  <table  class="table table-striped table-bordered table-hover table-condensed" id="productlist" >
-  </table>
+    <body>
+      <div class="container">
+      <label>Name:</label>
+      <input type="text" id="name" placeholder="Name">
+      <br>
+      <label>Price:</label>
+      <input type="number" id="price" placeholder="Price">
+      <br>
+      <label>Quantity:</label>
+      <input type="number" id="qty" placeholder="Quantity">
+      <br>
+      <label>Vendor:</label>
+      <select id="Vendor">
   
-</body>
+      </select>
+      <br>
+      <button id="add">Add</button>
+         <table class="table table-striped table-bordered table-hover table-condensed">
+             <thead>
+                 <tr>
+                     <td>name</td>
+                     <td>Price</td>
+                     <td>Quantity</td>
+                     <td>Vendor Name</td>
+                     <td>Options</td>
+                 </tr>
+             </thead>
+             <tbody id="Products">
+  
+             </tbody>
+         </table>
+         </div>
+  </body>
+ 
 </html>

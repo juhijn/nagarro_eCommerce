@@ -7,8 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <script src="jquery.js"></script>
-  <script src="productlist.js"></script>
-  <script src="userlist.js"></script>
+  <script src="addToCart.js"></script>
+  <!-- <script src="productlist.js"></script>
+  <script src="userlist.js"></script> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
   <!-- jQuery library -->
@@ -24,16 +25,32 @@
     <li><a href="vendors.html">Vendors</a></li>
     <li><a href="products.html">Products</a></li>
     <li><a class="active" href="shopping.html">Shopping</a></li>
-    <li><a href="cart.html">Cart</a></li>
+    <li><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
   </ul>
   <h1>Shopping</h1>
-
-  <input id="username" placeholder="User Name">
-  <button id="adduser"> Add User </button>
-  <br>
-  <br>
-  <table class="table table-striped table-bordered table-hover table-condensed" id="productlist">
-  </table>
+    <div class="container">
+        <label>Name:</label>
+    <input type="text" placeholder="Name" id="name" required>
+    <br>
+    <label>Email</label>
+    <input type="email" placeholder="Email" id="email" required>
+    <button id="login">Login</button>
+    <button id="cart" onclick="location.href = '/cart.html';">View Cart</button>
+        <table class="table table-hover table-hovered">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Price</td>
+                        <td>Quantity</td>
+                        <td>Vendor Name</td>
+                        <td>Options</td>
+                    </tr>
+                </thead>
+                <tbody id="Products">
+     
+                </tbody>
+            </table>
+            </div>
 </body>
 
 </html>

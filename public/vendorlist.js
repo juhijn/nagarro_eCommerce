@@ -1,40 +1,48 @@
-$(() => {
-
-    function refreshList() {
-      $.get('/vendors', (data) => {
-        $('#vendorlist').empty()
+$(()=>{
+    
+  refreshList()
   
-        //data.sort()
-  
-        for (let vendor of data) {
-          $('#vendorlist').append(
-              `<tr>
-              <td>${vendor.name}</td>
-              <td> <a href='/vendors/${vendor.name}'><button style="color:red;"><b> &#9747;</b></button></a></td> 
-            </tr>`
-            // `<tr>  <td>${vendor.name} </td>  priority <td>${vendor.priority}</td> </tr>`
-          )
-        }
-      })
-    }
-  
-    refreshList()
-  
-    $('#addvendor').click(() => {
-      $.post(
-        '/vendors',
-        {
-          name: $('#vendorname').val()
-        },
-        (data) => {
+  $("#add").click(()=>{
+      $.post('/vendors',{
+          name: $('#Name').val()
+      },
+      (data) => {
           if (data.success) {
-            refreshList()
+              refreshList();
           } else {
             alert('Some error occurred')
           }
         }
-      )
-    })
+  )})
   
-  })
-  
+})
+function refreshList()
+  {
+      $.get('/vendors',(data)=>{
+          $('#Vendor').empty();
+          for(let todo of data){
+              $('#Vendor').append(
+                  `<tr>
+                  <td>${todo.name}</td> 
+                  <td><button id="delete"  onclick="deleteElement(${todo.id})" style="color:red;"><b> X </b></button></td>
+                  </tr>`
+                  )
+          }
+      })
+  }
+  function deleteElement(id)
+  {
+      $.post(
+          'vendors/delete',
+          {
+              id: id
+          },
+          (data) => {
+              if (data.success) {
+                 refreshList();
+              } else {
+                alert('Some error occurred')
+              }
+            }
+          )
+  }

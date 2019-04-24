@@ -1,58 +1,48 @@
-const Sequelize = require('sequelize')
-const Op = Sequelize.Op
-
-const db = new Sequelize({
-  dialect: 'sqlite', // mysql, postgres, mssql
-  storage: __dirname + '/ecommerce.db'
-  // database : '',
-  // host: 'localhost',
-  // username: '',
-  // password: '',
-  // port: ''
+const sequelize=require("sequelize");
+const db=new sequelize({
+    dialect: 'sqlite',
+    storage:__dirname+'/myShop.db'
+})
+const vendors=db.define('vendor',{
+    name:{
+        type: sequelize.STRING,
+        allowNull: false
+    }
+});
+const users=db.define('user',{
+    username:{
+        type:sequelize.STRING,
+        allowNull: false
+    },
+    email:{
+        type: sequelize.STRING,
+        allowNull: false
+    }
+})
+const products=db.define('product',{
+    name:{
+        type: sequelize.STRING,
+        allowNull: false
+    },
+    price:{
+        type: sequelize.NUMBER,
+        allowNull: false
+    },
+    qty:{
+        type: sequelize.NUMBER,
+        allowNull: false
+    },
+})
+const cartItems=db.define('cartitem',{
+    qty: sequelize.INTEGER
 })
 
-const Vendors = db.define('vendor', {
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-})
-
-
-const Carts = db.define('cart', {
-  pId: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  }
-})
-
-const Products = db.define('product', {
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  price: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
-  vendorname: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  quantity: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  }
-
-})
-
-
-const Users = db.define('user', {
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-})
-module.exports = {
-  db, Vendors, Products, Users, Carts
+vendors.hasMany(products,{foreignKey:{allowNull:false},onDelete:'CASCADE'});
+products.belongsTo(vendors,{foreignKey:{allowNull: false},onDelete:'CASCADE'});
+cartItems.belongsTo(products,{onDelete:'CASCADE'});
+cartItems.belongsTo(users,{onDelete:'CASCADE'});
+users.hasMany(cartItems,{foreignKey:{allowNull: false},onDelete:'CASCADE'});
+products.hasMany(cartItems,{foreignKey:{allowNull: false},onDelete:'CASCADE'})
+module.exports={
+    db,vendors,products,users,cartItems 
 }
